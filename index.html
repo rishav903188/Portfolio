@@ -1,118 +1,146 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rishav Kumar | Full Stack Developer</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rishav Kumar | Full Stack Developer</title>
 
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
 
-  <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <h1 class="logo">Rishav Kumar</h1>
 
-</head>
-<body>
+      <div class="right-nav">
+        <button id="themeToggle" class="theme-btn">☀️</button>
+        <div class="menu-btn">☰</div>
+      </div>
 
-<header class="navbar">
-  <h1 class="logo">Rishav</h1>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <div class="right-nav">
-    <button id="themeToggle" class="theme-btn">☀️</button>
-    <div class="menu-btn">☰</div>
-  </div>
+    <section class="hero">
+      <div class="hero-text">
+        <h2>Full Stack Developer</h2>
+        <p>
+          Computer Science undergraduate aspiring Full Stack Developer with
+          hands-on experience in building scalable web applications using React,
+          Node.js, Express, and MongoDB. Strong understanding of real-time
+          systems, RESTful APIs, and clean architecture. Experienced in
+          deploying applications and solving production-level issues.
+        </p>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+        <div class="hero-buttons">
+          <a href="./assets/Rishav_Kumar_Resume.pdf" download class="btn"
+            >Download CV</a
+          >
+          <a
+            href="https://github.com/rishav903188"
+            target="_blank"
+            class="btn outline"
+            >GitHub</a
+          >
+        </div>
+      </div>
 
-<section class="hero">
-  <div class="hero-text">
-    <h2>Backend-Focused Full Stack Developer</h2>
-    <p>
-      I build secure and scalable web applications using Node.js, Express,
-      MySQL and MongoDB with AWS deployment experience.
-    </p>
+      <div class="hero-image">
+        <img src="./assets/profile.jpg" alt="Rishav Kumar" />
+      </div>
+    </section>
 
-    <div class="hero-buttons">
-      <a href="./assets/Rishav_Kumar_Resume.pdf" download class="btn">Download CV</a>
-      <a href="https://github.com/rishav903188" target="_blank" class="btn outline">GitHub</a>
-    </div>
-  </div>
-
-  <div class="hero-image">
-    <img src="./assets/profile.jpg" alt="Rishav Kumar">
-  </div>
-</section>
-
-<section id="about" class="section hidden">
-  <h3>About Me</h3>
-  <p>
-    Computer Science undergraduate with strong backend experience.
-    I focus on REST APIs, authentication, database design,
-    and scalable backend systems.
-  </p>
-</section>
-
-<section id="skills" class="section dark hidden">
-  <h3>Skills</h3>
-  <div class="skills">
-  <span><i class="devicon-python-plain"></i> Python</span>
-  <span><i class="devicon-cplusplus-plain"></i> C++</span>
-  <span><i class="devicon-html5-plain"></i> HTML & CSS</span>
-  <span><i class="devicon-javascript-plain"></i> JavaScript</span>
-  <span><i class="devicon-react-original"></i> React</span>
-  <span><i class="devicon-nodejs-plain"></i> Node.js</span>
-  <span><i class="devicon-express-original"></i> Express.js</span>
-  <span><i class="devicon-mysql-plain"></i> MySQL</span>
-  <span><i class="devicon-mongodb-plain"></i> MongoDB</span>
-  <span>REST APIs</span>
-  <span>JWT</span>
-  <span><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS</span>
-  <span><i class="devicon-git-plain"></i> Git & GitHub</span>
-</div>
-
-</section>
-
-<section id="projects" class="section hidden">
-  <h3>Projects</h3>
-  <div class="projects">
-    <div class="card">
-      <h4>Library Management System</h4>
+    <section id="about" class="section hidden">
+      <h3>About Me</h3>
       <p>
-        Backend-driven system with role-based authentication,
-        REST APIs, MySQL schema design and fine calculation logic.
+        Computer Science undergraduate with strong backend experience. I focus
+        on REST APIs, authentication, database design, and scalable backend
+        systems.
       </p>
-      <p class="tech">Node.js • Express • MySQL</p>
-    </div>
+    </section>
 
-    <div class="card">
-      <h4>Car Rental Service</h4>
-      <p>
-        Full-stack application with booking management,
-        availability checks and clean backend architecture.
-      </p>
-      <p class="tech">Node.js • Express • MySQL</p>
-    </div>
-  </div>
-</section>
+    <section id="skills" class="section dark hidden">
+      <h3>Skills</h3>
+      <div class="skills">
+        <span><i class="devicon-python-plain"></i> Python</span>
+        <span><i class="devicon-cplusplus-plain"></i> C++</span>
+        <span><i class="devicon-html5-plain"></i> HTML & CSS</span>
+        <span><i class="devicon-javascript-plain"></i> JavaScript</span>
+        <span><i class="devicon-react-original"></i> React</span>
+        <span><i class="devicon-nodejs-plain"></i> Node.js</span>
+        <span><i class="devicon-express-original"></i> Express.js</span>
+        <span><i class="devicon-mysql-plain"></i> MySQL</span>
+        <span><i class="devicon-mongodb-plain"></i> MongoDB</span>
+        <span>REST APIs</span>
+        <span>JWT</span>
+        <span
+          ><i class="devicon-amazonwebservices-plain-wordmark"></i> AWS</span
+        >
+        <span><i class="devicon-git-plain"></i> Git & GitHub</span>
+      </div>
+    </section>
 
-<section id="contact" class="section dark hidden">
-  <h3>Contact</h3>
-  <div class="contact-links">
-    <a href="mailto:rishavkumar62@yahoo.com">📧 rishavkumar62@yahoo.com</a>
-    <a href="https://github.com/rishav903188" target="_blank">💻 GitHub</a>
-    <a href="https://linkedin.com/in/rishavkumar903" target="_blank">🔗 LinkedIn</a>
-  </div>
-</section>
+    <section id="projects" class="section hidden">
+      <h3>Projects</h3>
+      <div class="projects">
+        <div class="card">
+          <h4>BookXchange – Peer-to-peer Book Trading Platform</h4>
+          <p>
+            - Developed a scalable full-stack platform enabling secure book
+            exchange using a structured state- driven workflow <br>(requested →
+            accepted → shipped → delivered → completed) <br>
+            - Implemented real-time chat and notifications using Socket.io with scoped rooms for privacy
+            and efficient communication <br>
+            - Handled 50+ concurrent exchange requests while maintaining data consistency using database-level
+            Locking <br>
+            - Reduced invalid transaction states by implementing a strict state-driven backend system <br>
+            - Built a role-based access control (RBAC) system with admin moderation, and secure data sharing. <br>
+            
+          </p>
+          <p class="tech">React • Node.js • Express • MongoDB • Socket.io</p>
+        </div>
 
+        <div class="card">
+          <h4>Vingoo — Real-Time Food Delivery Platform</h4>
+          <p>
+            - Developed a full-stack multi-role system supporting users, shop owners, and delivery partners with
+              separate dashboards<br>
+            - Implemented real-time order tracking and status updates using Socket.io with targeted event emission<br>    
+            - Reduced database complexity by ~30% by replacing relational assignment logic with a flat status model<br>
+            - Enabled dynamic assignment flow where shop owners assign delivery partners and track execution in
+              real time<br>
+          </p>
+          <p class="tech">React • Redux • Node.js • Express • MongoDB • Socket.io</p>
+        </div>
+      </div>
+    </section>
 
-<script src="script.js"></script>
-</body>
+    <section id="contact" class="section dark hidden">
+      <h3>Contact</h3>
+      <div class="contact-links">
+        <a href="mailto:rishavkumar62@yahoo.com">📧 rishavkumar62@yahoo.com</a>
+        <a href="https://github.com/rishav903188" target="_blank">💻 GitHub</a>
+        <a href="https://linkedin.com/in/rishavkumar903" target="_blank"
+          >🔗 LinkedIn</a
+        >
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
 </html>
