@@ -5,37 +5,38 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Rishav Kumar — Full Stack Developer portfolio. React, Node.js, MongoDB, Socket.io specialist." />
-  <title>Rishav Kumar | Full Stack Developer</title>
+    content="Rishav Kumar — Full Stack Developer portfolio. React, Node.js, Express, PostgreSQL, Redis, Docker." />
+  <title>rishav903188 ~ portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"></script>
 </head>
 
 <body>
 
-  <!-- ========== CURSOR GLOW ========== -->
+  <div class="scroll-progress" id="scrollProgress"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- ========== BACKGROUND PARTICLES ========== -->
-  <canvas id="particleCanvas"></canvas>
+  <div class="grid-overlay"></div>
+  <canvas id="matrixRain" class="matrix-rain"></canvas>
 
   <!-- ========== NAVBAR ========== -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#hero" class="nav-logo">
-        <span class="logo-bracket">&lt;</span>RK<span class="logo-bracket">/&gt;</span>
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="nav-path">rishav@dev</span><span class="nav-tilde">:~$</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about" class="nav-link" data-section="about">About</a></li>
-        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
-        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
-        <li><a href="#achievements" class="nav-link" data-section="achievements">Achievements</a></li>
-        <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
-        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+        <li><a href="#about" class="nav-link" data-section="about">whoami</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">stack.json</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">projects/</a></li>
+        <li><a href="#log" class="nav-link" data-section="log">git log</a></li>
+        <li><a href="#education" class="nav-link" data-section="education">education</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">contact --send</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -45,58 +46,59 @@
 
   <!-- ========== HERO ========== -->
   <section class="hero" id="hero">
-    <div class="hero-content reveal">
-      <p class="hero-greeting">Hello World, I'm</p>
-      <h1 class="hero-name">Rishav Kumar</h1>
-      <div class="hero-role-wrapper">
-        <span class="hero-role-prefix">I build </span>
-        <span class="typing-text" id="typingText"></span>
-        <span class="typing-cursor">|</span>
+    <div class="hero-glow-orb orb-1"></div>
+    <div class="hero-glow-orb orb-2"></div>
+    <div class="terminal-window reveal">
+      <div class="terminal-titlebar">
+        <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+        <span class="terminal-title">bash — rishav@dev — 90x28</span>
       </div>
-      <p class="hero-summary">
-        CS undergraduate crafting scalable full-stack applications — from real-time systems and REST APIs to cloud
-        deployments that actually hold up under pressure.
-      </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">
-          <span>View Projects</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M12 5l7 7-7 7" />
-          </svg>
-        </a>
-        <a href="assets/Rishav_Kumar_Resume.pdf" download class="btn btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span>Download CV</span>
-        </a>
-        <a href="#contact" class="btn btn-outline">Let's Talk</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">200+</span><span class="stat-label">LeetCode</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Years Coding</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><span class="stat-num">2</span><span class="stat-label">Major Projects</span></div>
-      </div>
-    </div>
-    <div class="hero-visual reveal">
-      <div class="avatar-ring">
-        <div class="avatar-inner">
-          <img src="assets/profile.jpg" alt="Rishav Kumar" class="avatar-photo" />
+      <div class="terminal-body">
+        <p class="term-line"><span class="prompt">rishav@dev</span><span class="path">:~$</span> <span id="typedCmd"></span></p>
+        <div class="term-output" id="termOutput">
+          <p class="out-name cascade-line">Rishav Kumar</p>
+          <p class="out-role cascade-line">Full Stack Developer &mdash; React / Node.js / PostgreSQL / Docker</p>
+          <p class="out-line cascade-line">> B.Tech CSE, Lovely Professional University &nbsp;(2023&ndash;2027)</p>
+          <p class="out-line cascade-line">> Building full-stack, production-style apps — React UIs backed by</p>
+          <p class="out-line cascade-line">&nbsp;&nbsp;REST APIs, job queues, caching, and containerised deployments.</p>
+          <p class="out-line cascade-line">> 250+ DSA problems solved · Rank 8/80+ teams @ Call of Code hackathon</p>
         </div>
-        <div class="orbit orbit-1">
-          <div class="orbit-dot"></div>
+        <div class="term-cta">
+          <a href="#projects" class="btn btn-primary">
+            <span>./view-projects.sh</span>
+          </a>
+          <a href="assets/Rishav_Kumar_Resume.pdf" download class="btn btn-outline">
+            <span>curl resume.pdf --output</span>
+          </a>
+          <a href="#contact" class="btn btn-outline">ping me</a>
         </div>
-        <div class="orbit orbit-2">
-          <div class="orbit-dot"></div>
-        </div>
-        <div class="orbit orbit-3">
-          <div class="orbit-dot"></div>
+
+        <div class="term-divider"></div>
+
+        <div class="term-interactive">
+          <div class="term-history" id="termHistory"></div>
+          <div class="term-input-line">
+            <span class="prompt">rishav@dev</span><span class="path">:~$</span>
+            <input type="text" id="termInput" class="term-input" autocomplete="off" spellcheck="false"
+              placeholder="type 'help' and hit enter…" aria-label="Interactive terminal" />
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="hero-stats reveal">
+      <div class="stat"><span class="stat-value"><span class="stat-num" data-target="250">0</span><span class="stat-suffix">+</span></span><span class="stat-label">DSA Problems</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-value"><span class="stat-num" data-target="2">0</span><span class="stat-suffix"></span></span><span class="stat-label">Production-style Projects</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-value"><span class="stat-num" data-target="8">0</span><span class="stat-suffix">th</span></span><span class="stat-label">Rank / 80+ Teams</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-value"><span class="stat-num" data-target="3">0</span><span class="stat-suffix">+</span></span><span class="stat-label">Certifications</span></div>
+    </div>
+
     <div class="scroll-indicator">
       <div class="scroll-line"></div>
-      <span>Scroll</span>
+      <span>scroll</span>
     </div>
   </section>
 
@@ -104,60 +106,42 @@
   <section class="section about" id="about">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">01 — About</span>
+        <span class="section-tag">$ cat about.md</span>
         <h2 class="section-title">Who I Am</h2>
       </div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <p>I'm a <strong>Computer Science undergraduate</strong> at Lovely Professional University, passionate about
-            building things that scale and actually work in production. I specialise in full-stack development with a
-            strong focus on <strong>real-time systems</strong>, clean API design, and cloud infrastructure.</p>
-          <p>Whether it's architecting peer-to-peer trading platforms, designing multi-role food delivery systems, or
-            diving deep into competitive programming — I bring the same obsessive attention to detail to everything I
-            build.</p>
+          <p>I'm a <strong>Computer Science undergraduate</strong> at Lovely Professional University, working across
+            the <strong>full stack</strong> — React on the front end, and Node.js/Express APIs on the back end that
+            stay correct and fast once real traffic hits them, not just once they pass a demo.</p>
+          <p>My stack is <strong>React, Node.js, Express, PostgreSQL with Prisma, Redis and BullMQ</strong> for
+            queues/caching, and <strong>Docker</strong> for shipping things the same way they run locally. I build
+            everything with a Repository-Service architecture, JWT auth, audit logging, and API docs from day one —
+            because that's what separates a project from a product.</p>
           <div class="about-chips">
-            <span class="chip">🚀 Full Stack Dev</span>
-            <span class="chip">⚡ Real-Time Systems</span>
-            <span class="chip">☁️ AWS Cloud</span>
-            <span class="chip">🧠 Problem Solver</span>
+            <span class="chip">🖥️ Full Stack Dev</span>
+            <span class="chip">⚙️ Backend Systems</span>
+            <span class="chip">🐳 Docker & Deployment</span>
+            <span class="chip">🧩 DSA / Problem Solving</span>
           </div>
         </div>
         <div class="about-card reveal">
-          <div class="glass-card about-info-card">
-            <div class="info-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-              <span>Rishav Kumar</span>
+          <div class="code-card">
+            <div class="terminal-titlebar mini">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="terminal-title">profile.json</span>
             </div>
-            <div class="info-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="m8 21 4-4 4 4" />
-                <path d="M2 17h20" />
-              </svg>
-              <span>Full Stack Developer</span>
-            </div>
-            <div class="info-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <span>Punjab, India</span>
-            </div>
-            <div class="info-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-              </svg>
-              <span>B.Tech CSE, LPU (2023–2027)</span>
-            </div>
-            <div class="info-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-              </svg>
-              <span>CGPA: 7.15</span>
-            </div>
+            <pre class="code-block"><span class="tok-brace">{</span>
+  <span class="tok-key">"name"</span>: <span class="tok-str">"Rishav Kumar"</span>,
+  <span class="tok-key">"role"</span>: <span class="tok-str">"Full Stack Developer"</span>,
+  <span class="tok-key">"location"</span>: <span class="tok-str">"Punjab, India"</span>,
+  <span class="tok-key">"education"</span>: <span class="tok-str">"B.Tech CSE, LPU"</span>,
+  <span class="tok-key">"years"</span>: <span class="tok-str">"2023 – 2027"</span>,
+  <span class="tok-key">"cgpa"</span>: <span class="tok-str">"7.1"</span>,
+  <span class="tok-key">"focus"</span>: [<span class="tok-str">"APIs"</span>, <span class="tok-str">"Databases"</span>, <span class="tok-str">"DevOps"</span>],
+  <span class="tok-key">"currentlyLearning"</span>: <span class="tok-str">"System Design"</span>,
+  <span class="tok-key">"openTo"</span>: <span class="tok-str">"internships, backend roles"</span>
+<span class="tok-brace">}</span></pre>
           </div>
         </div>
       </div>
@@ -168,78 +152,75 @@
   <section class="section skills" id="skills">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">02 — Skills</span>
+        <span class="section-tag">$ cat stack.json</span>
         <h2 class="section-title">Tech Stack</h2>
       </div>
       <div class="skills-grid">
 
-        <div class="glass-card skill-card reveal">
-          <div class="skill-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polyline points="16 18 22 12 16 6" />
-              <polyline points="8 6 2 12 8 18" />
-            </svg>
-          </div>
-          <h3 class="skill-card-title">Languages</h3>
+        <div class="skill-card reveal">
+          <h3 class="skill-card-title"><span class="skill-hash">#</span> Languages</h3>
           <div class="skill-tags">
+            <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">C++</span>
             <span class="skill-tag">Python</span>
-            <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">SQL</span>
-            <span class="skill-tag">HTML</span>
-            <span class="skill-tag">CSS</span>
           </div>
         </div>
 
-        <div class="glass-card skill-card reveal">
-          <div class="skill-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <rect x="2" y="3" width="20" height="14" rx="2" />
-              <path d="m8 21 4-4 4 4" />
-              <path d="M2 17h20" />
-            </svg>
+        <div class="skill-card reveal">
+          <h3 class="skill-card-title"><span class="skill-hash">#</span> Backend</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Node.js</span>
+            <span class="skill-tag">Express.js</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">JWT Auth</span>
+            <span class="skill-tag">BullMQ</span>
+            <span class="skill-tag">Cron Jobs</span>
           </div>
-          <h3 class="skill-card-title">Frameworks</h3>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3 class="skill-card-title"><span class="skill-hash">#</span> Databases</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">Prisma ORM</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Redis</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3 class="skill-card-title"><span class="skill-hash">#</span> Cloud & DevOps</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS EC2</span>
+            <span class="skill-tag">AWS S3</span>
+            <span class="skill-tag">AWS RDS</span>
+            <span class="skill-tag">IAM / VPC</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Git & GitHub</span>
+          </div>
+        </div>
+
+        <div class="skill-card reveal">
+          <h3 class="skill-card-title"><span class="skill-hash">#</span> Frontend</h3>
           <div class="skill-tags">
             <span class="skill-tag">React.js</span>
-            <span class="skill-tag">Express.js</span>
-            <span class="skill-tag">Redux Toolkit</span>
+            <span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span>
             <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Node.js</span>
           </div>
         </div>
 
-        <div class="glass-card skill-card reveal">
-          <div class="skill-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="3" />
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-              <path d="M4.93 4.93a10 10 0 0 0 0 14.14" />
-            </svg>
-          </div>
-          <h3 class="skill-card-title">Tools & Tech</h3>
+        <div class="skill-card reveal">
+          <h3 class="skill-card-title"><span class="skill-hash">#</span> CS Fundamentals</h3>
           <div class="skill-tags">
-            <span class="skill-tag">Git & GitHub</span>
-            <span class="skill-tag">Socket.io</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">REST APIs</span>
-          </div>
-        </div>
-
-        <div class="glass-card skill-card reveal">
-          <div class="skill-card-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M18 20V10" />
-              <path d="M12 20V4" />
-              <path d="M6 20v-6" />
-            </svg>
-          </div>
-          <h3 class="skill-card-title">Cloud — AWS</h3>
-          <div class="skill-tags">
-            <span class="skill-tag">EC2</span>
-            <span class="skill-tag">S3</span>
-            <span class="skill-tag">IAM</span>
-            <span class="skill-tag">RDS</span>
+            <span class="skill-tag">DSA</span>
+            <span class="skill-tag">OOPs</span>
+            <span class="skill-tag">Operating Systems</span>
+            <span class="skill-tag">Computer Networks</span>
+            <span class="skill-tag">DBMS</span>
           </div>
         </div>
 
@@ -251,68 +232,63 @@
   <section class="section projects" id="projects">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">03 — Projects</span>
+        <span class="section-tag">$ ls ./projects</span>
         <h2 class="section-title">Featured Work</h2>
       </div>
       <div class="projects-grid">
 
-        <!-- BookXchange -->
-        <article class="project-card glass-card reveal">
+        <!-- LibOps -->
+        <article class="project-card reveal">
           <div class="project-header">
-            <div class="project-num">01</div>
+            <div class="project-titlebar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="project-filename">libops/</span>
+            </div>
             <div class="project-links">
-              <a href="https://github.com/rishav903188" target="_blank" rel="noopener" class="icon-btn"
-                aria-label="GitHub">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
-                </svg>
-              </a>
-              <a href="https://book-xchange-gray.vercel.app" target="_blank" rel="noopener" class="icon-btn" aria-label="Live Demo">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
+              <a href="https://github.com/rishav903188" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
                 </svg>
               </a>
             </div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">BookXchange</h3>
-            <p class="project-subtitle">Peer-to-Peer Book Trading Platform</p>
+            <h3 class="project-title">LibOps</h3>
+            <p class="project-subtitle">// Library Operations Management System &nbsp;·&nbsp; Jun–Jul 2026</p>
             <ul class="project-features">
-              <li>Scalable exchange lifecycle: <code>Requested → Accepted → Shipped → Delivered → Completed</code></li>
-              <li>Real-time chat & notifications powered by <strong>Socket.io</strong></li>
-              <li>Role-based access control with <strong>Admin + User</strong> roles</li>
-              <li>Concurrent exchange handling with data consistency guarantees</li>
+              <li>Secure <strong>JWT auth</strong> + role-based access control, book inventory, borrow/return workflows, reservation queue, fine management</li>
+              <li>Repository-Service architecture on <strong>PostgreSQL + Prisma ORM</strong>, with Swagger docs, audit logging, and Docker for dev/deploy</li>
+              <li>Performance layer: <strong>Redis caching</strong>, <strong>BullMQ</strong> background jobs, async email notifications, Node-Cron automation</li>
+              <li>AWS S3 file storage, PDF report generation, analytics APIs, rate limiting, centralized error handling</li>
             </ul>
           </div>
           <div class="project-footer">
             <div class="tech-stack">
-              <span class="tech-pill">React</span>
               <span class="tech-pill">Node.js</span>
-              <span class="tech-pill">Express</span>
-              <span class="tech-pill">MongoDB</span>
-              <span class="tech-pill">Socket.io</span>
+              <span class="tech-pill">PostgreSQL</span>
+              <span class="tech-pill">Prisma</span>
+              <span class="tech-pill">Redis</span>
+              <span class="tech-pill">BullMQ</span>
+              <span class="tech-pill">Docker</span>
             </div>
           </div>
-          <div class="project-glow"></div>
         </article>
 
-        <!-- Vingoo -->
-        <article class="project-card glass-card reveal">
+        <!-- InfraGuard Lite -->
+        <article class="project-card reveal">
           <div class="project-header">
-            <div class="project-num">02</div>
+            <div class="project-titlebar">
+              <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+              <span class="project-filename">infraguard-lite/</span>
+            </div>
             <div class="project-links">
-              <a href="https://github.com/rishav903188" target="_blank" rel="noopener" class="icon-btn"
-                aria-label="GitHub">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+              <a href="https://github.com/rishav903188" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
                 </svg>
               </a>
-              <a href="https://vingoo-eight.vercel.app/signin" target="_blank" rel="noopener" class="icon-btn" aria-label="Live Demo">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <a href="#" target="_blank" rel="noopener" class="icon-btn" aria-label="Live Demo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                   <polyline points="15 3 21 3 21 9" />
                   <line x1="10" y1="14" x2="21" y2="3" />
@@ -321,55 +297,93 @@
             </div>
           </div>
           <div class="project-body">
-            <h3 class="project-title">Vingoo</h3>
-            <p class="project-subtitle">Real-Time Food Delivery Platform</p>
+            <h3 class="project-title">InfraGuard Lite</h3>
+            <p class="project-subtitle">// API Monitoring & Tracking Platform &nbsp;·&nbsp; Apr–Jul 2026</p>
             <ul class="project-features">
-              <li>Multi-role system: <strong>User, Shop Owner, Delivery Partner</strong></li>
-              <li>Real-time order tracking & status updates via <strong>Socket.io</strong></li>
-              <li>Optimised database schema — reduced query complexity by <strong>~30%</strong></li>
-              <li>Dynamic delivery assignment algorithm with smart routing</li>
+              <li>Full-stack monitoring platform — real-time uptime tracking, response-time analytics, failure history</li>
+              <li>Repository-Service backend with JWT + refresh token rotation, Zod validation, rate limiting, Swagger docs</li>
+              <li>Automated health-check scheduler (<strong>Node-Cron</strong>) running every 5 min, concurrent checks, TTL-indexed 30-day history</li>
+              <li>Interactive dashboard: uptime analytics, response-time charts, React Query caching, Tailwind UI</li>
             </ul>
           </div>
           <div class="project-footer">
             <div class="tech-stack">
               <span class="tech-pill">React</span>
-              <span class="tech-pill">Redux</span>
               <span class="tech-pill">Node.js</span>
               <span class="tech-pill">Express</span>
               <span class="tech-pill">MongoDB</span>
+              <span class="tech-pill">JWT</span>
             </div>
           </div>
-          <div class="project-glow"></div>
         </article>
 
       </div>
     </div>
   </section>
 
-  <!-- ========== ACHIEVEMENTS ========== -->
-  <section class="section achievements" id="achievements">
+  <!-- ========== GIT LOG (achievements/training/certs) ========== -->
+  <section class="section log" id="log">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">04 — Achievements</span>
+        <span class="section-tag">$ git log --oneline --graph</span>
         <h2 class="section-title">Highlights</h2>
       </div>
-      <div class="achievements-grid">
+      <div class="git-log">
 
-        <div class="glass-card achievement-card reveal">
-          <div class="achievement-icon">🏆</div>
-          <div class="achievement-content">
-            <h3>Call of Code Hackathon</h3>
-            <p>Secured <strong>Rank 8</strong> out of hundreds of participants — delivering a working product under
-              intense time pressure.</p>
+        <div class="commit reveal">
+          <div class="commit-graph"><span class="commit-node"></span></div>
+          <div class="commit-card">
+            <div class="commit-hash">a1c4f9e</div>
+            <h3>Call of Code Hackathon — Rank 8 / 80+ teams</h3>
+            <p>Led a 4-member team to build a Campus Hospital Management System in 36 hours — OPD booking &
+              digital prescriptions — while managing Git workflow and task delegation.</p>
           </div>
         </div>
 
-        <div class="glass-card achievement-card reveal">
-          <div class="achievement-icon">⚡</div>
-          <div class="achievement-content">
-            <h3>200+ LeetCode Problems</h3>
-            <p>Consistent problem-solver with a focus on Data Structures & Algorithms — arrays, trees, graphs, and
-              dynamic programming.</p>
+        <div class="commit reveal">
+          <div class="commit-graph"><span class="commit-node"></span></div>
+          <div class="commit-card">
+            <div class="commit-hash">7e2b0d1</div>
+            <h3>Branch Hygiene Workshop</h3>
+            <p>Taught 20+ juniors feature branching and conflict resolution — cut mentorship queries by
+              <strong>70%</strong>.</p>
+          </div>
+        </div>
+
+        <div class="commit reveal">
+          <div class="commit-graph"><span class="commit-node"></span></div>
+          <div class="commit-card">
+            <div class="commit-hash">4d8a3c6</div>
+            <h3>250+ DSA Problems Solved</h3>
+            <p>LeetCode & Codeforces — arrays, trees, graphs, dynamic programming, sharpened algorithmic thinking.</p>
+          </div>
+        </div>
+
+        <div class="commit reveal">
+          <div class="commit-graph"><span class="commit-node"></span></div>
+          <div class="commit-card">
+            <div class="commit-hash">9f31e22</div>
+            <h3>Linux Fundamentals — LPU Certificate</h3>
+            <p>Shell scripting, Nginx-based deployment, server management, networking & permissions, Docker
+              workflows. <span class="commit-date">Jun–Jul 2025</span></p>
+          </div>
+        </div>
+
+        <div class="commit reveal">
+          <div class="commit-graph"><span class="commit-node"></span></div>
+          <div class="commit-card">
+            <div class="commit-hash">2b77a0f</div>
+            <h3>AWS: Zero to Hero — Certificate</h3>
+            <p>EC2, S3, IAM, RDS, VPC fundamentals for cloud-deployed backend systems. <span class="commit-date">Apr 2026</span></p>
+          </div>
+        </div>
+
+        <div class="commit reveal">
+          <div class="commit-graph"><span class="commit-node"></span></div>
+          <div class="commit-card">
+            <div class="commit-hash">e60c118</div>
+            <h3>Project Management — Certificate</h3>
+            <p>Planning, execution and delivery fundamentals applied across parallel project tracks. <span class="commit-date">Apr 2026</span></p>
           </div>
         </div>
 
@@ -381,32 +395,44 @@
   <section class="section education" id="education">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">05 — Education</span>
+        <span class="section-tag">$ cat education.log</span>
         <h2 class="section-title">Academic Background</h2>
       </div>
       <div class="timeline">
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
-            <div class="timeline-badge">Current</div>
+          <div class="timeline-card">
+            <div class="timeline-badge">current</div>
             <h3 class="timeline-degree">B.Tech in Computer Science & Engineering</h3>
-            <p class="timeline-school">Lovely Professional University, Punjab</p>
+            <p class="timeline-school">Lovely Professional University, Phagwara, Punjab</p>
             <div class="timeline-meta">
-              <span class="timeline-year">2023 – 2027</span>
-              <span class="timeline-grade">CGPA: 7.15</span>
+              <span class="timeline-year">Aug 2023 – Present</span>
+              <span class="timeline-grade">CGPA 7.1</span>
             </div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="glass-card timeline-card">
+          <div class="timeline-card">
             <h3 class="timeline-degree">Intermediate (12th Grade)</h3>
-            <p class="timeline-school">Holy Cross School, Bokaro Steel City</p>
+            <p class="timeline-school">Holy Cross School, Bokaro, Jharkhand</p>
             <div class="timeline-meta">
-              <span class="timeline-year">2021 – 2022</span>
-              <span class="timeline-grade">74.8%</span>
+              <span class="timeline-year">Apr 2021 – Mar 2022</span>
+              <span class="timeline-grade">74.6%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <h3 class="timeline-degree">Matriculation (10th Grade)</h3>
+            <p class="timeline-school">Gourav Awas Uchcha Vidyalaya, Bokaro, Jharkhand</p>
+            <div class="timeline-meta">
+              <span class="timeline-year">Apr 2020 – Mar 2021</span>
+              <span class="timeline-grade">76.8%</span>
             </div>
           </div>
         </div>
@@ -419,58 +445,48 @@
   <section class="section contact" id="contact">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">06 — Contact</span>
+        <span class="section-tag">$ contact --send</span>
         <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">I'm currently open to new opportunities. Whether you have a question, a project, or
-          just want to connect — my inbox is always open.</p>
+        <p class="section-subtitle">Open to full stack developer internships and roles. Inbox is always open —
+          drop a message and I'll respond.</p>
       </div>
       <div class="contact-grid">
-        <div class="glass-card contact-card reveal">
+        <a href="mailto:rishav90318@gmail.com" class="contact-card reveal">
           <div class="contact-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
           </div>
           <h3>Email</h3>
-          <a href="mailto:rishavkumar62@yahoo.com" class="contact-link">rishavkumar62@yahoo.com</a>
-        </div>
-        <div class="glass-card contact-card reveal">
+          <span class="contact-link">rishav90318@gmail.com</span>
+        </a>
+        <a href="https://github.com/rishav903188" target="_blank" rel="noopener" class="contact-card reveal">
           <div class="contact-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.137 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z" />
             </svg>
           </div>
           <h3>GitHub</h3>
-          <a href="https://github.com/rishav903188" target="_blank" rel="noopener"
-            class="contact-link">github.com/rishav903188</a>
-        </div>
-        <div class="glass-card contact-card reveal">
+          <span class="contact-link">github.com/rishav903188</span>
+        </a>
+        <a href="https://www.linkedin.com/in/rishavkumar903/" target="_blank" rel="noopener" class="contact-card reveal">
           <div class="contact-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
           </div>
           <h3>LinkedIn</h3>
-          <a href="https://www.linkedin.com/in/rishavkumar903/" target="_blank" rel="noopener"
-            class="contact-link">linkedin.com/in/rishavkumar903</a>
-        </div>
-      </div>
-      <div class="contact-cta reveal">
-        <a href="mailto:rishavkumar62@yahoo.com" class="btn btn-primary btn-large">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-          <span>Say Hello</span>
+          <span class="contact-link">linkedin.com/in/rishavkumar903</span>
         </a>
       </div>
     </div>
   </section>
 
-
+  <footer class="footer">
+    <p><strong>Rishav Kumar</strong> — built with HTML, CSS & vanilla JS</p>
+    <p class="footer-sub">// exit 0</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
